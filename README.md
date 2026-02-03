@@ -43,23 +43,23 @@ The system uses a **ReAct** (Reasoning + Acting) agent architecture facilitated 
 
 ```mermaid
 graph TD
-    User([👤 User]) <-->|Interacts| UI[💻 Streamlit Frontend]
-    UI <-->|HTTP Requests| API[🚀 FastAPI Backend]
+    User(["👤 User"]) <-->|Interacts| UI["💻 Streamlit Frontend"]
+    UI <-->|HTTP Requests| API["🚀 FastAPI Backend"]
     
-    subgraph "🤖 AI Agent (LangGraph)"
-        API --> Router{🧠 Gemini Router}
+    subgraph LangGraphAgent["🤖 AI Agent - LangGraph"]
+        API --> Router{"🧠 Gemini Router"}
         
-        Router -->|General Chat| MedGemma[🩺 MedGemma (Ollama)]
-        Router -->|Need Help?| Tool1[📍 Google Maps Tool]
-        Router -->|Emergency?| Tool2[📞 Twilio Emergency Tool]
+        Router -->|General Chat| MedGemma["🩺 MedGemma - Ollama"]
+        Router -->|Need Help?| Tool1["📍 Google Maps Tool"]
+        Router -->|Emergency?| Tool2["📞 Twilio Emergency Tool"]
     end
     
     MedGemma -->|Therapeutic Response| API
     Tool1 -->|List of Therapists| API
     Tool2 -->|Call Status| API
     
-    Tool1 -->|API Call| GMap[🌍 Google Maps API]
-    Tool2 -->|Voice Call| Twilio[📱 Twilio Network]
+    Tool1 -->|API Call| GMap["🌍 Google Maps API"]
+    Tool2 -->|Voice Call| Twilio["📱 Twilio Network"]
 ```
 
 ---
